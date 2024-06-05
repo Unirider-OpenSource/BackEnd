@@ -17,7 +17,7 @@ public class User extends AuditableAbstractAggregateRoot<User> {
     @Getter
     @Embedded
     @Column(name = "unirider_user_id")
-    private final UniRiderUserRecordId uniriderUserRecordId;
+    private final UniRiderUserRecordId uniRiderUserRecordId;
 
     @Embedded
     private ProfileId profileId;
@@ -26,7 +26,7 @@ public class User extends AuditableAbstractAggregateRoot<User> {
     private UserPerformanceMetricSet performanceMetricSet;
 
     public User() {
-        this.uniriderUserRecordId = new UniRiderUserRecordId();
+        this.uniRiderUserRecordId = new UniRiderUserRecordId();
         this.performanceMetricSet = new UserPerformanceMetricSet();
     }
 
@@ -40,21 +40,11 @@ public class User extends AuditableAbstractAggregateRoot<User> {
         this.profileId = profileId;
     }
 
-    /**
-     * Updates the student metrics when a course is completed.
-     * It increments the total completed courses.
-     *
-     */
     public void updateMetricsOnRideOffered() {
         this.performanceMetricSet = this.performanceMetricSet.incrementTotalRidesOffered();
     }
 
-    /**
-     * Updates the student metrics when a tutorial is completed.
-     * It increments the total completed tutorials.
-     *
-     */
-    public void updateMetricsOnTutorialCompleted() {
+    public void updateUserMetricsOnRideOffered() {
         this.performanceMetricSet = this.performanceMetricSet.incrementTotalRidesTaken();
     }
 
@@ -66,11 +56,4 @@ public class User extends AuditableAbstractAggregateRoot<User> {
         return this.profileId.profileId();
     }
 
-    public Integer getTotalCompletedCourses() {
-        return this.performanceMetricSet.totalCompletedCourses();
-    }
-
-    public Integer () {
-        return this.performanceMetricSet.totalTutorials();
-    }
 }

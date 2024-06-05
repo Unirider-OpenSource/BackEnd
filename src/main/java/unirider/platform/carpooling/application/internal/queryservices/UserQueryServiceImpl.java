@@ -35,4 +35,8 @@ public class UserQueryServiceImpl implements UserQueryService {
     public Optional<User> handle(GetUserByUniRiderUserRecordIdQuery query) {
         return userRepository.findByUniRiderUserRecordId(query.uniRiderUserRecordId());
     }
+
+
+
+
 }

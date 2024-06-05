@@ -36,12 +36,13 @@ public class UserCommandServiceImpl implements UserCommandService{
     }
 
     @Override
-    public UniRiderUserRecordId handle(UpdateUserMetricsOnRideOfferedCommand command) {
-        userRepository.findByUniRiderUserRecordId(command.uniRiderUserRecordId()).map(user -> {
-            user.updateMetricsOnRideOffered(command.rideOffered());
+    public UniRiderUserRecordId handle (UpdateUserMetricsOnRideOfferedCommand command) {
+        userRepository.findByUniRiderUserRecordId(command.userRecordId()).map(user ->{
+            user.updateMetricsOnRideOffered();
             userRepository.save(user);
             return user.getUniRiderUserRecordId();
         }).orElseThrow(() -> new IllegalArgumentException("User not found"));
         return null;
+
     }
 }

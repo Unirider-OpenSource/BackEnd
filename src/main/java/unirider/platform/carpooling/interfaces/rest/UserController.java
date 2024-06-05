@@ -22,7 +22,7 @@ public class UserController {
     private final UserQueryService userQueryService;
 
 
-    public UsersController(UserCommandService userCommandService, UserQueryService userQueryService) {
+    public UserController(UserCommandService userCommandService, UserQueryService userQueryService) {
         this.userCommandService = userCommandService;
         this.userQueryService = userQueryService;
     }
@@ -43,7 +43,17 @@ public class UserController {
         return new ResponseEntity<>(userResource, HttpStatus.CREATED);
 
     }
-
+   @GetMapping("/{userRecordId}")
+    public ResponseEntity<UserResource> getUserByUserRecordId(@PathVariable String userRecordId) {
+        var uniRiderUserRecordId = new UniRiderUserRecordId(userRecordId);
+        var getUserByUniRiderUserRecordIdQuery = new GetUserByUniRiderUserRecordIdQuery(uniRiderUserRecordId);
+        var user = userQueryService.handle(getUserByUniRiderUserRecordIdQuery);
+        if (user.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        var userResource = UserResourceFromEntityAssembler.toResourceFromEntity(user.get());
+        return ResponseEntity.ok(userResource);
+    }
 
 
 
