@@ -17,6 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import java.util.List;
 
 /**
  * Web Security Configuration.
@@ -87,6 +89,13 @@ public class WebSecurityConfiguration {
      */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.cors(configurer -> configurer.configurationSource(_ -> {
+            var cors = new CorsConfiguration();
+            cors.setAllowedOrigins(List.of("*"));
+            cors.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+            cors.setAllowedHeaders(List.of("*"));
+            return cors;
+        }));
         http.csrf(csrfConfigurer -> csrfConfigurer.disable())
                 .exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(unauthorizedRequestHandler))
                 .sessionManagement( customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -119,4 +128,3 @@ public class WebSecurityConfiguration {
         this.unauthorizedRequestHandler = authenticationEntryPoint;
     }
 }
-
