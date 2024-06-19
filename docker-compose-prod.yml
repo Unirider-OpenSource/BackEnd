@@ -1,6 +1,6 @@
 services:
   unirider-carpooling-platform:
-    image: unirider-carpooling-platform:0.0.3
+    image: unirider-carpooling-platform:0.0.5
     build:
       context: .
       dockerfile: Dockerfile

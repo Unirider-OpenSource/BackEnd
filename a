@@ -1,0 +1,47 @@
+[33mcommit dd2952eaf098e2d37d35bf88a027729734289363[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mtest_deploy[m[33m, [m[1;31morigin/test_deploy[m[33m)[m
+Author: Luis Angel Anampa Lavado <u202218664@upc.edu.pe>
+Date:   Tue Jun 18 01:28:11 2024 -0500
+
+    new files to deploy
+
+[33mcommit 922068aebd713585e6f6f8addd40c7b740e3b919[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Gustavo Pardo <u202120347@upc.edu.pe>
+Date:   Wed Jun 5 15:17:36 2024 -0500
+
+    Added Atuthentication
+
+[33mcommit 6276e3ee544bfcf783df95c937b912a985f3e122[m
+Author: Gustavo Pardo <u202120347@upc.edu.pe>
+Date:   Wed Jun 5 09:36:40 2024 -0500
+
+    fixed usserBC
+
+[33mcommit aa60d6c7cd5a57fc95235f5f4fcc4014b085fdbf[m
+Author: Gustavo Pardo <u202120347@upc.edu.pe>
+Date:   Wed Jun 5 01:30:24 2024 -0500
+
+    Added User BC/ Not fixed yet
+
+[33mcommit 525f2ae11a8e17758b3c0bcf71bbf1e0e94cc9ef[m
+Author: Gustavo Pardo <u202120347@upc.edu.pe>
+Date:   Tue Jun 4 17:30:43 2024 -0500
+
+    feat(profiles): added profiles bounded context.
+
+[33mcommit 871ebc1e58c9348084e267066efb3e772d7f725f[m
+Author: Gustavo Pardo <u202120347@upc.edu.pe>
+Date:   Tue Jun 4 12:34:19 2024 -0500
+
+    feat(profiles): added profile aggregate.
+
+[33mcommit 6dd7db4e2e5eac9f4a0266c40f64d75eae141c70[m
+Author: Gustavo Pardo <u202120347@upc.edu.pe>
+Date:   Tue Jun 4 10:13:36 2024 -0500
+
+    chore: added shared context.
+
+[33mcommit aa89417acabe99d18675b6a085a542e389d985ba[m
+Author: Gustavo Pardo <u202120347@upc.edu.pe>
+Date:   Tue Jun 4 09:48:59 2024 -0500
+
+    New proyect
