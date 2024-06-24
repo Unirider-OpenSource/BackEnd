@@ -1,13 +1,17 @@
 package unirider.platform.profiles.interfaces.acl;
 
-
-
 import unirider.platform.profiles.domain.model.commands.CreateProfileCommand;
 import unirider.platform.profiles.domain.model.queries.GetProfileByEmailQuery;
 import unirider.platform.profiles.domain.model.valueobjects.EmailAddress;
 import unirider.platform.profiles.domain.services.ProfileCommandService;
 import unirider.platform.profiles.domain.services.ProfileQueryService;
 import org.springframework.stereotype.Service;
+import unirider.platform.profiles.domain.model.queries.GetPassengerByIdQuery;
+import unirider.platform.profiles.domain.model.queries.GetDriverByIdQuery;
+import unirider.platform.profiles.domain.services.PassengerCommandService;
+import unirider.platform.profiles.domain.services.PassengerQueryService;
+import unirider.platform.profiles.domain.services.DriverCommandService;
+import unirider.platform.profiles.domain.services.DriverQueryService;
 
 /**
  * Service Facade for the Profile context.
@@ -22,10 +26,21 @@ import org.springframework.stereotype.Service;
 public class ProfilesContextFacade {
     private final ProfileCommandService profileCommandService;
     private final ProfileQueryService profileQueryService;
+    private final DriverCommandService driverCommandService;
+    private final DriverQueryService driverQueryService;
+    private final PassengerCommandService passengerCommandService;
+    private final PassengerQueryService passengerQueryService;
 
-    public ProfilesContextFacade(ProfileCommandService profileCommandService, ProfileQueryService profileQueryService) {
+
+
+    public ProfilesContextFacade(ProfileCommandService profileCommandService, ProfileQueryService profileQueryService,DriverCommandService driverCommandService, DriverQueryService driverQueryService,
+                                 PassengerCommandService passengerCommandService,PassengerQueryService passengerQueryService) {
         this.profileCommandService = profileCommandService;
         this.profileQueryService = profileQueryService;
+        this.driverCommandService = driverCommandService;
+        this.driverQueryService = driverQueryService;
+        this.passengerCommandService = passengerCommandService;
+        this.passengerQueryService = passengerQueryService;
     }
 
     /**
@@ -61,4 +76,18 @@ public class ProfilesContextFacade {
         return profile.get().getId();
 
     }
+    public Long fetchPassengerIdById(Long passengerId){
+        var getPassengerByIdQuery = new GetPassengerByIdQuery(passengerId);
+        var passenger = passengerQueryService.handle(getPassengerByIdQuery);
+        if (passenger.isEmpty()) return 0L;
+        return passenger.get().getId();
+    }
+
+    public Long fetchDriverIdById(Long driverId){
+        var getDriverByIdQuery = new GetDriverByIdQuery(driverId);
+        var driver = driverQueryService.handle(getDriverByIdQuery);
+        if (driver.isEmpty()) return 0L;
+        return driver.get().getId();
+    }
+
 }
