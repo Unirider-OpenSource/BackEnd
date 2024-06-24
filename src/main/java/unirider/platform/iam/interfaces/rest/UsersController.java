@@ -15,12 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-/**
- * This class is a REST controller that exposes the users resource.
- * It includes the following operations:
- * - GET /api/v1/users: returns all the users
- * - GET /api/v1/users/{userId}: returns the user with the given id
- **/
 @RestController
 @RequestMapping(value = "/api/v1/users", produces = MediaType.APPLICATION_JSON_VALUE)
 @Tag(name = "Users", description = "User Management Endpoints")
@@ -31,11 +25,6 @@ public class UsersController {
         this.userQueryService = userQueryService;
     }
 
-    /**
-     * This method returns all the users.
-     * @return a list of user resources
-     * @see UserResource
-     */
     @GetMapping
     public ResponseEntity<List<UserResource>> getAllUsers() {
         var getAllUsersQuery = new GetAllUsersQuery();
@@ -44,13 +33,6 @@ public class UsersController {
         return ResponseEntity.ok(userResources);
     }
 
-    /**
-     * This method returns the user with the given id.
-     * @param userId the user id
-     * @return the user resource with the given id
-     * @throws RuntimeException if the user is not found
-     * @see UserResource
-     */
     @GetMapping(value = "/{userId}")
     public ResponseEntity<UserResource> getUserById(@PathVariable Long userId) {
         var getUserByIdQuery = new GetUserByIdQuery(userId);

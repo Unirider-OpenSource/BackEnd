@@ -10,10 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 
-/**
- * ApplicationReadyEventHandler class
- * This class is used to handle the ApplicationReadyEvent
- */
 @Service
 public class ApplicationReadyEventHandler {
     private final RoleCommandService roleCommandService;
@@ -23,11 +19,6 @@ public class ApplicationReadyEventHandler {
         this.roleCommandService = roleCommandService;
     }
 
-    /**
-     * Handle the ApplicationReadyEvent
-     * This method is used to seed the roles
-     * @param event the ApplicationReadyEvent the event to handle
-     */
     @EventListener
     public void on(ApplicationReadyEvent event) {
         var applicationName = event.getApplicationContext().getId();

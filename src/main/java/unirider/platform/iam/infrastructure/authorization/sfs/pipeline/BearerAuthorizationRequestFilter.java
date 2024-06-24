@@ -16,14 +16,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
-/**
- * Bearer Authorization Request Filter.
- * <p>
- * This class is responsible for filtering requests and setting the user authentication.
- * It extends the OncePerRequestFilter class.
- * </p>
- * @see OncePerRequestFilter
- */
 public class BearerAuthorizationRequestFilter extends OncePerRequestFilter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BearerAuthorizationRequestFilter.class);
@@ -38,12 +30,6 @@ public class BearerAuthorizationRequestFilter extends OncePerRequestFilter {
         this.userDetailsService = userDetailsService;
     }
 
-    /**
-     * This method is responsible for filtering requests and setting the user authentication.
-     * @param request The request object.
-     * @param response The response object.
-     * @param filterChain The filter chain object.
-     */
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
         try {
